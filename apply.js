@@ -13,3 +13,11 @@ const person2 = {
 }
 
 console.log(person1.function1.apply(person2));
+
+// 示例 4：借用数组的方法
+function sum() {
+        const array = Array.prototype.slice.apply(arguments);
+        return array.reduce((acc, x) => acc + x, 0);
+    }
+
+console.log(sum (1,2,3,4,5,6));
