@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this Binding Example</title>
+</head>
+<body>
+<h1>Check the Console for Output</h1>
+<script>
+  // 1. 保存外部的this
+  function MyObjectWithSelf() {
+    this.name = "MyObject with self";
+    var self = this;  // 保存外部的this
+
+    setTimeout(function() {
+      console.log(self.name);  // 使用self访问外部的this
+    }, 1000);
+  }
+
+  // 2. 使用bind绑定this
+  function MyObjectWithBind() {
+    this.name = "MyObject with bind";
+
+    setTimeout(function() {
+      console.log(this.name);  // 使用bind绑定this
+    }.bind(this), 2000);  // 绑定this
+  }
+
+  // 3. 使用箭头函数
+  function MyObjectWithArrow() {
+    this.name = "MyObject with arrow function";
+
+    setTimeout(() => {
+      console.log(this.name);  // 使用箭头函数的this
+    }, 3000);
+  }
+
+  new MyObjectWithSelf();   // 输出: MyObject with self
+  new MyObjectWithBind();   // 输出: MyObject with bind
+  new MyObjectWithArrow();  // 输出: MyObject with arrow function
+</script>
+</body>
+</html>
